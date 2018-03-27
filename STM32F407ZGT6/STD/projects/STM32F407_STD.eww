@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
+        <path>$WS_DIR$\003.BEEP\ProjectFile\STM32_F407_STD_BEEP.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\002.KEYSCAN\ProjectFile\STM32_F407_STD_KEYSCAN.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\001.LED\ProjectFile\STM32_F407_STD_LED.ewp</path>
     </project>
     <batchBuild />
