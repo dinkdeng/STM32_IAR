@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\003.BEEP\ProjectFile\STM32F407_HAL_BEEP.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\002.KEYSCAN\ProjectFile\STM32F407_HAL_KEYSCAN.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\001.LED\ProjectFile\STM32F407_HAL_LED.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>
