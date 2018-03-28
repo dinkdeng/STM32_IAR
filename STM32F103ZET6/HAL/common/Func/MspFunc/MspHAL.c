@@ -1,6 +1,4 @@
-#include "stm32f1xx_hal.h"
-
-
+#include "stm32f1xx.h"
 
 /**
 * Fn:  void SetSystemClockHSETo72M(void)

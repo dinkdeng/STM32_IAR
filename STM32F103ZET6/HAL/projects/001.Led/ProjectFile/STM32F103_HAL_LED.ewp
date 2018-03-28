@@ -1064,10 +1064,10 @@
             <group>
                 <name>CoreFunc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.c</name>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerDelay.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.h</name>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerDelay.h</name>
                 </file>
             </group>
             <group>
@@ -1092,6 +1092,12 @@
                 <name>SupportFunc</name>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\stm32f1xx_hal_conf.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\stm32f1xx_it.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\stm32f1xx_it.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\system_stm32f1xx.c</name>

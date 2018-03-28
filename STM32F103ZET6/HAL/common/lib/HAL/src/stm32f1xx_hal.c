@@ -122,8 +122,7 @@ HAL_StatusTypeDef HAL_Init(void)
     HAL_NVIC_SetPriorityGrouping(USER_SYSTEM_INT_GROUP);
 
     /* Use systick as time base source and configure 1ms tick (default clock after Reset is MSI) */
-    /*初始化系统TICK定时器,用作HAL库的定时,我喜欢去掉这个定时,将systick用作延时函数,目前看来也没啥影响*/
-    /*HAL_InitTick(TICK_INT_PRIORITY);*/
+    HAL_InitTick(TICK_INT_PRIORITY);
 
     /* Init the low level hardware */
     /*HAL的底层硬件初始化*/
@@ -201,54 +200,13 @@ __weak void HAL_MspDeInit(void)
 __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
     /*Configure the SysTick to have interrupt in 1ms time basis*/
-    HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 1000);
+    HAL_SYSTICK_Config(HAL_RCC_GetSysClockFreq() / 1000);
 
     /*Configure the SysTick IRQ priority */
     HAL_NVIC_SetPriority(SysTick_IRQn, TickPriority, 0);
 
     /* Return function status */
     return HAL_OK;
-}
-
-/**
-  * @}
-  */
-
-  /** @defgroup HAL_Exported_Functions_Group2 HAL Control functions
-   *  @brief    HAL Control functions
-   *
-  @verbatim
-   ===============================================================================
-                        ##### HAL Control functions #####
-   ===============================================================================
-      [..]  This section provides functions allowing to:
-        (+) Provide a tick value in millisecond
-        (+) Provide a blocking delay in millisecond
-        (+) Suspend the time base source interrupt
-        (+) Resume the time base source interrupt
-        (+) Get the HAL API driver version
-        (+) Get the device identifier
-        (+) Get the device revision identifier
-        (+) Enable/Disable Debug module during Sleep mode
-        (+) Enable/Disable Debug module during STOP mode
-        (+) Enable/Disable Debug module during STANDBY mode
-
-  @endverbatim
-    * @{
-    */
-
-    /**
-      * @brief This function is called to increment  a global variable "uwTick"
-      *        used as application time base.
-      * @note In the default implementation, this variable is incremented each 1ms
-      *       in Systick ISR.
-      * @note This function is declared as __weak to be overwritten in case of other
-      *      implementations in user file.
-      * @retval None
-      */
-__weak void HAL_IncTick(void)
-{
-    uwTick++;
 }
 
 /**
@@ -280,38 +238,6 @@ __weak void HAL_Delay(__IO uint32_t Delay)
     while ((HAL_GetTick() - tickstart) < Delay)
     {
     }
-}
-
-/**
-  * @brief Suspend Tick increment.
-  * @note In the default implementation , SysTick timer is the source of time base. It is
-  *       used to generate interrupts at regular time intervals. Once HAL_SuspendTick()
-  *       is called, the the SysTick interrupt will be disabled and so Tick increment
-  *       is suspended.
-  * @note This function is declared as __weak to be overwritten in case of other
-  *       implementations in user file.
-  * @retval None
-  */
-__weak void HAL_SuspendTick(void)
-{
-    /* Disable SysTick Interrupt */
-    CLEAR_BIT(SysTick->CTRL, SysTick_CTRL_TICKINT_Msk);
-}
-
-/**
-  * @brief Resume Tick increment.
-  * @note In the default implementation , SysTick timer is the source of time base. It is
-  *       used to generate interrupts at regular time intervals. Once HAL_ResumeTick()
-  *       is called, the the SysTick interrupt will be enabled and so Tick increment
-  *       is resumed.
-  * @note This function is declared as __weak  to be overwritten  in case of other
-  *       implementations in user file.
-  * @retval None
-  */
-__weak void HAL_ResumeTick(void)
-{
-    /* Enable SysTick Interrupt */
-    SET_BIT(SysTick->CTRL, SysTick_CTRL_TICKINT_Msk);
 }
 
 /**

@@ -42,6 +42,9 @@ extern "C" {
 
 /*系统VDD电压,单位MV*/
 #define  VDD_VALUE                    ((uint32_t)3300) /*!< Value of VDD in mv */
+
+#define  TICK_INT_PRIORITY            ((uint32_t)0x000F)
+
 /*是否使用操作系统,默认不使用*/
 #define  USE_RTOS                     0
 /*是否使能预取指,默认使能*/
@@ -62,7 +65,7 @@ extern "C" {
 
 /*设置等待HSE稳定的时间,没什么用,需要定时器*/
 #if !defined  (HSE_STARTUP_TIMEOUT)
-#define HSE_STARTUP_TIMEOUT    ((uint32_t)100)   
+#define HSE_STARTUP_TIMEOUT    ((uint32_t)100)
 #endif /* HSE_STARTUP_TIMEOUT */
 
 /*设置HSI晶振数值*/
