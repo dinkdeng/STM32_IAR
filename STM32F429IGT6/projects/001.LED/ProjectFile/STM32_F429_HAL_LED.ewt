@@ -1235,6 +1235,12 @@
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\system_stm32f4xx.c</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\SystemUtil.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\SupportFunc\SystemUtil.h</name>
+                </file>
             </group>
         </group>
         <group>

@@ -5,13 +5,6 @@
  extern "C" {
 #endif
 
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-
-/* ########################## Module Selection ############################## */
-/**
-  * @brief This is the list of modules to be used in the HAL driver 
-  */
 #define HAL_MODULE_ENABLED
 #define HAL_ADC_MODULE_ENABLED
 #define HAL_CAN_MODULE_ENABLED
@@ -57,71 +50,53 @@
   #define HSE_VALUE    ((uint32_t)25000000) /*!< Value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
 
+/**等待HSE起振的最大等待时间,100毫秒 */
 #if !defined  (HSE_STARTUP_TIMEOUT)
   #define HSE_STARTUP_TIMEOUT    ((uint32_t)100)   /*!< Time out for HSE start up, in ms */
 #endif /* HSE_STARTUP_TIMEOUT */
 
-/**
-  * @brief Internal High Speed oscillator (HSI) value.
-  *        This value is used by the RCC HAL module to compute the system frequency
-  *        (when HSI is used as system clock source, directly or through the PLL). 
-  */
+/**内部高速时钟数值 */
 #if !defined  (HSI_VALUE)
   #define HSI_VALUE    ((uint32_t)16000000) /*!< Value of the Internal oscillator in Hz*/
 #endif /* HSI_VALUE */
 
-/**
-  * @brief Internal Low Speed oscillator (LSI) value.
-  */
+/**内部低速时钟数值 */
 #if !defined  (LSI_VALUE) 
  #define LSI_VALUE  ((uint32_t)32000)    
 #endif /* LSI_VALUE */                      /*!< Value of the Internal Low Speed oscillator in Hz
                                              The real value may vary depending on the variations
                                              in voltage and temperature.  */
-/**
-  * @brief External Low Speed oscillator (LSE) value.
-  */
+
+/**外部低速时钟数值 */
 #if !defined  (LSE_VALUE)
  #define LSE_VALUE  ((uint32_t)32768)    /*!< Value of the External Low Speed oscillator in Hz */
 #endif /* LSE_VALUE */
 
+/**外部低速晶振起震最大等待时间 */
 #if !defined  (LSE_STARTUP_TIMEOUT)
   #define LSE_STARTUP_TIMEOUT    ((uint32_t)5000)   /*!< Time out for LSE start up, in ms */
 #endif /* LSE_STARTUP_TIMEOUT */
 
-/**
-  * @brief External clock source for I2S peripheral
-  *        This value is used by the I2S HAL module to compute the I2S clock source 
-  *        frequency, this source is inserted directly through I2S_CKIN pad. 
-  */
+
+/**如果使用外部时钟骗子,在这里定义输入的时钟 */
 #if !defined  (EXTERNAL_CLOCK_VALUE)
   #define EXTERNAL_CLOCK_VALUE    ((uint32_t)12288000) /*!< Value of the Internal oscillator in Hz*/
 #endif /* EXTERNAL_CLOCK_VALUE */
 
-/* Tip: To avoid modifying this file each time you need to use different HSE,
-   ===  you can define the HSE value in your toolchain compiler preprocessor. */
 
-/* ########################### System Configuration ######################### */
-/**
-  * @brief This is the HAL system configuration section
-  */     
-#define  VDD_VALUE                    ((uint32_t)3300) /*!< Value of VDD in mv */
-#define  TICK_INT_PRIORITY            ((uint32_t)0x0F) /*!< tick interrupt priority */
-#define  USE_RTOS                     0
+/**电压级别设置 */
+#define  VDD_VALUE                    ((uint32_t)3300) /*Value of VDD in mv */
+/** Tick定时器优先级定义*/
+#define  TICK_INT_PRIORITY            ((uint32_t)0x0F) 
+/**预取指使能 */
 #define  PREFETCH_ENABLE              1
+/**指令缓存使能 */
 #define  INSTRUCTION_CACHE_ENABLE     1
+/**数据缓存使能 */
 #define  DATA_CACHE_ENABLE            1
 
-/* ########################## Assert Selection ############################## */
-/**
-  * @brief Uncomment the line below to expanse the "assert_param" macro in the 
-  *        HAL drivers code
-  */
-/* #define USE_FULL_ASSERT    1 */
 
-/* ################## Ethernet peripheral configuration ##################### */
-
-/* Section 1 : Ethernet peripheral configuration */
+/**ETH功能的MAC地址 */
 
 /* MAC ADDRESS: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */
 #define MAC_ADDR0   2
@@ -346,6 +321,10 @@
 #ifdef HAL_HCD_MODULE_ENABLED
  #include "stm32f4xx_hal_hcd.h"
 #endif /* HAL_HCD_MODULE_ENABLED */
+
+#ifdef HAL_MODULE_ENABLED
+  #include "stm32f4xx_hal.h"
+#endif
    
 /* Exported macro ------------------------------------------------------------*/
 #ifdef  USE_FULL_ASSERT
