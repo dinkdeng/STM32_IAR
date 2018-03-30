@@ -1054,12 +1054,6 @@
             <group>
                 <name>CoreFunc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerial1.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerial1.h</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.c</name>
                 </file>
                 <file>

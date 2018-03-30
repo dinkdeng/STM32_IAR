@@ -1,10 +1,18 @@
 #include "DeviceKey.h"
 #include "CoreTickDelay.h"
+#include "SystemUtil.h"
 
 /*KEY LEFT PE2*/
 /*KEY DOWN PE3*/
 /*KEY RIGHT PE4*/
 /*KEY UP PA0*/
+
+/**外部按键端口位段定义 */
+#define DEVICE_KEY_LEFT     PEin(2)
+#define DEVICE_KEY_RIGHT    PEin(4)
+#define DEVICE_KEY_UP       PAin(0)
+#define DEVICE_KEY_DOWN     peIN(3)
+
 
 /*系统外部按键驱动文件*/
 
@@ -79,7 +87,7 @@ static KEY_STATUS DeviceKeyLeftRead(void)
         return KEY_RELEASE;
     else
     {
-        DEVICE_KEY_DELAY_MS(DEVICE_WAIT_PRESS_STABLE_MS);
+        DeviceWaitKeyStable();
         ioValue = GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_2);
         if (ioValue == 1)
             return KEY_RELEASE;
@@ -95,7 +103,7 @@ static KEY_STATUS DeviceKeyRightRead(void)
         return KEY_RELEASE;
     else
     {
-        DEVICE_KEY_DELAY_MS(DEVICE_WAIT_PRESS_STABLE_MS);
+        DeviceWaitKeyStable();
         ioValue = GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_4);
         if (ioValue == 1)
             return KEY_RELEASE;
@@ -111,7 +119,7 @@ static KEY_STATUS DeviceKeyUpRead(void)
         return KEY_RELEASE;
     else
     {
-        DEVICE_KEY_DELAY_MS(DEVICE_WAIT_PRESS_STABLE_MS);
+        DeviceWaitKeyStable();
         ioValue = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
         if (ioValue == 0)
             return KEY_RELEASE;
@@ -127,7 +135,7 @@ static KEY_STATUS DeviceKeyDownRead(void)
         return KEY_RELEASE;
     else
     {
-        DEVICE_KEY_DELAY_MS(DEVICE_WAIT_PRESS_STABLE_MS);
+        DeviceWaitKeyStable();
         ioValue = GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_3);
         if (ioValue == 1)
             return KEY_RELEASE;

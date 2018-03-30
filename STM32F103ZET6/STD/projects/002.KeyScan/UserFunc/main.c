@@ -4,62 +4,60 @@
 #include "DeviceLed.h"
 #include "DeviceKey.h"
 
+/**LEFT按键处理程序 */
 void DeviceKeyLeftEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_OFF);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_OFF);
-    CoreTickDelayMs(100);
 }
 
+/**Right按键处理程序 */
 void DeviceKeyRightEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_ON);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_OFF);
-    CoreTickDelayMs(100);
 }
 
+/**up按键处理程序 */
 void DeviceKeyUpEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_OFF);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_ON);
-    CoreTickDelayMs(100);
 }
 
+/**down按键处理程序 */
 void DeviceKeyDownEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_ON);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_ON);
-    CoreTickDelayMs(100);
 }
-
+/**系统按键检测处理 */
 void KeyScanLoop(void)
 {
-    KEY_STATUS keyStatus = KEY_RELEASE;
-    keyStatus = DeviceKeyRead(KEY_LEFT);
-    if (keyStatus == KEY_PRESS)
+    KEY_STATUS leftKeyStatus = KEY_RELEASE;
+    KEY_STATUS rightKeyStatus = KEY_RELEASE;
+    KEY_STATUS upKeyStatus = KEY_RELEASE;
+    KEY_STATUS downKeyStatus = KEY_RELEASE;
+    leftKeyStatus = DeviceKeyRead(KEY_LEFT);
+    rightKeyStatus = DeviceKeyRead(KEY_RIGHT);
+    upKeyStatus = DeviceKeyRead(KEY_UP);
+    downKeyStatus = DeviceKeyRead(KEY_DOWN);
+    if(KEY_PRESS == leftKeyStatus)
     {
         DeviceKeyLeftEvent();
-        return;
     }
-    keyStatus = DeviceKeyRead(KEY_RIGHT);
-    if (keyStatus == KEY_PRESS)
+    if(KEY_PRESS == rightKeyStatus)
     {
         DeviceKeyRightEvent();
-        return;
     }
-    keyStatus = DeviceKeyRead(KEY_UP);
-    if (keyStatus == KEY_PRESS)
+    if(KEY_PRESS == upKeyStatus)
     {
         DeviceKeyUpEvent();
-        return;
     }
-    keyStatus = DeviceKeyRead(KEY_DOWN);
-    if (keyStatus == KEY_PRESS)
+    if(KEY_PRESS == downKeyStatus)
     {
         DeviceKeyDownEvent();
-        return;
     }
-    CoreTickDelayMs(100);
 }
 
 int main(void)

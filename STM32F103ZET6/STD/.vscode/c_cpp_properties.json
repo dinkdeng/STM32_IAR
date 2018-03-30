@@ -45,12 +45,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.13.26128/include/*",
-                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.13.26128/atlmfc/include/*",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/um",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/ucrt",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/shared",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/winrt",
+                "D:/Program Files (x86)/IAR Systems/Embedded Workbench 8.0-ARM/arm/inc/c",
                 "${workspaceRoot}",
                 "${workspaceRoot}/common/chipSupport",
                 "${workspaceRoot}/common/Func/CoreFunc",
@@ -61,24 +56,27 @@
                 "${workspaceRoot}/common/startup"
             ],
             "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
+                "STM32F10X_HD",
+                "USE_STDPERIPH_DRIVER"
             ],
             "intelliSenseMode": "msvc-x64",
             "browse": {
                 "path": [
-                    "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.13.26128/include/*",
-                    "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.13.26128/atlmfc/include/*",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/um",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/ucrt",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/shared",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/winrt",
-                    "${workspaceRoot}"
+                    "D:/Program Files (x86)/IAR Systems/Embedded Workbench 8.0-ARM/arm/inc/c",
+                    "${workspaceRoot}",
+                    "${workspaceRoot}/common/chipSupport",
+                    "${workspaceRoot}/common/Func/CoreFunc",
+                    "${workspaceRoot}/common/Func/DeviceFunc",
+                    "${workspaceRoot}/common/Func/DinkFunc",
+                    "${workspaceRoot}/common/Func/SupportFunc",
+                    "${workspaceRoot}/common/lib/inc",
+                    "${workspaceRoot}/common/startup"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
     ],
     "version": 3
