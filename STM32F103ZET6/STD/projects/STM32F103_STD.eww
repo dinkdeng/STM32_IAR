@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
+        <path>$WS_DIR$\013.ADXL345\ProjectFile\STM32F103_STD_Adxl345.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\010.AT24CXX\ProjectFile\STM32F103_STD_AT24CXX.ewp</path>
     </project>
     <project>

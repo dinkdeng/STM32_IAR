@@ -9,6 +9,8 @@ typedef enum IIC_WAIT_ACK
     IIC_WAIT_ACK_FAIL = 1,
 }IIC_WAIT_ACK;
 
+#define CORE_IIC_WAIT_MS(nms)               CoreTickDelayMs(nms)
+
 /**iic平台延时接口 */
 #define CORE_IIC_WAIT_US(nus)                CoreTickDelayUs(nus)      
 
