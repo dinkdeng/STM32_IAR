@@ -1,6 +1,7 @@
 #ifndef __CORE_SERIAL_UART1_DMA_H_
 #define __CORE_SERIAL_UART1_DMA_H_
 #include "stm32f10x.h"
+#include <stdio.h>
 
 /**最大接收缓冲区大小 */
 #define UART1_RX_MAX_BUFFER_SIZE        256

@@ -269,3 +269,9 @@ void USART1_IRQHandler(void)
 
 
 
+/*重定向系统printf库.*/
+int putchar(int ch)
+{
+    CoreSerialUart1DmaSendChar(ch);
+    return ch;
+}
