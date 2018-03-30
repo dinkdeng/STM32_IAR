@@ -39,10 +39,6 @@ typedef enum INT_SUB_PRI
     INT_SUB_PRI_3 = 3,
 }INT_SUB_PRI;
 
-//串口1抢占优先级与子优先级
-#define UART1_PRE_PRI	    INT_PRE_PRI_0
-#define UART1_SUB_PRI		INT_SUB_PRI_3
-
 
 /*系统位段支持*/
 /*位段模式操作IO口定义*/

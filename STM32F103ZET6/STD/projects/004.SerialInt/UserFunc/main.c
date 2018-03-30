@@ -3,14 +3,14 @@
 #include "CoreTickDelay.h"
 #include "DeviceLed.h"
 #include "DeviceKey.h"
-#include "CoreSerialUart1General.h"
+#include "CoreSerialUart1Int.h"
 
 /**LEFT按键处理程序 */
 void DeviceKeyLeftEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_OFF);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_OFF);
-    CoreSerialUart1GeneralSendString("Left Key Press\r\n");
+    CoreSerialUart1IntSendString("Left Key Press\r\n");
 }
 
 /**Right按键处理程序 */
@@ -18,7 +18,7 @@ void DeviceKeyRightEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_ON);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_OFF);
-    CoreSerialUart1GeneralSendString("Right Key Press\r\n");
+    CoreSerialUart1IntSendString("Right Key Press\r\n");
 }
 
 /**up按键处理程序 */
@@ -26,7 +26,7 @@ void DeviceKeyUpEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_OFF);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_ON);
-    CoreSerialUart1GeneralSendString("Up Key Press\r\n");
+    CoreSerialUart1IntSendString("Up Key Press\r\n");
 }
 
 /**down按键处理程序 */
@@ -34,7 +34,7 @@ void DeviceKeyDownEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_ON);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_ON);
-    CoreSerialUart1GeneralSendString("Down Key Press\r\n");
+    CoreSerialUart1IntSendString("Down Key Press\r\n");
 }
 /**系统按键检测处理 */
 void KeyScanLoop(void)
@@ -67,6 +67,8 @@ void KeyScanLoop(void)
 
 int main(void)
 {
+    uint8_t* uart1RecvDatBufferPtr = NULL;
+    uint16_t recvLength = 0;
     /*初始化系统分组*/
     SystemUtilSetIntGroup();
     /*初始化延时函数*/
@@ -76,9 +78,16 @@ int main(void)
     /*初始化外部按键*/
     DeviceKeyInit();
     /**初始化串口 */
-    CoreSerialUart1GeneralInit(115200);
+    CoreSerialUart1IntInit(115200);
     while(1)
     {
         KeyScanLoop();
+        recvLength = CoreSerialUart1IntGetRecv(&uart1RecvDatBufferPtr);
+        if(recvLength != 0)
+        {
+            CoreSerialUart1IntSendBuffer(uart1RecvDatBufferPtr,recvLength);
+            CoreSerialUart1IntSendString("\r\n");
+            CoreSerialUart1IntClearRx();
+        }
     }
 }

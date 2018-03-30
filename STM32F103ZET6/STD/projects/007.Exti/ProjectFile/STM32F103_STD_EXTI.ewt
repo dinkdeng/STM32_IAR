@@ -1188,10 +1188,10 @@
             <group>
                 <name>CoreFunc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1General.c</name>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1Dma.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1General.h</name>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1Dma.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.c</name>
@@ -1202,6 +1202,18 @@
             </group>
             <group>
                 <name>DeviceFunc</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceBeep.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceBeep.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceExti.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceExti.h</name>
+                </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceKey.c</name>
                 </file>

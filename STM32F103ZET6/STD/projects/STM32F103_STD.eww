@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
+        <path>$WS_DIR$\007.Exti\ProjectFile\STM32F103_STD_EXTI.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\002.KeyScan\ProjectFile\STM32F103_STD_KEYSCAN.ewp</path>
     </project>
     <project>
         <path>$WS_DIR$\001.Led\ProjectFile\STM32F103_STD_LED.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\006.Beep\ProjectFile\STM32F103_STD_SERIAL_BEEP.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\005.SerialDma\ProjectFile\STM32F103_STD_SERIAL_DMA.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\003.SerialGeneral\ProjectFile\STM32F103_STD_SERIAL_GENERAL.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\004.SerialInt\ProjectFile\STM32F103_STD_SERIAL_INT.ewp</path>
     </project>
     <batchBuild />
 </workspace>

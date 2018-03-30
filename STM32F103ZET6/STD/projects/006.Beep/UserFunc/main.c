@@ -3,14 +3,16 @@
 #include "CoreTickDelay.h"
 #include "DeviceLed.h"
 #include "DeviceKey.h"
-#include "CoreSerialUart1General.h"
+#include "CoreSerialUart1Dma.h"
+#include "DeviceBeep.h"
 
 /**LEFT按键处理程序 */
 void DeviceKeyLeftEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_OFF);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_OFF);
-    CoreSerialUart1GeneralSendString("Left Key Press\r\n");
+    DeviceBeepSet(BEEP_OFF);
+    CoreSerialUart1DmaSendString("Left Key Press\r\n");
 }
 
 /**Right按键处理程序 */
@@ -18,7 +20,8 @@ void DeviceKeyRightEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_ON);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_OFF);
-    CoreSerialUart1GeneralSendString("Right Key Press\r\n");
+    DeviceBeepSet(BEEP_ON);
+    CoreSerialUart1DmaSendString("Right Key Press\r\n");
 }
 
 /**up按键处理程序 */
@@ -26,7 +29,7 @@ void DeviceKeyUpEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_OFF);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_ON);
-    CoreSerialUart1GeneralSendString("Up Key Press\r\n");
+    CoreSerialUart1DmaSendString("Up Key Press\r\n");
 }
 
 /**down按键处理程序 */
@@ -34,7 +37,7 @@ void DeviceKeyDownEvent(void)
 {
     DeviceLedSet(LED_INDEX_RED, LED_STATUS_ON);
     DeviceLedSet(LED_INDEX_GREEN, LED_STATUS_ON);
-    CoreSerialUart1GeneralSendString("Down Key Press\r\n");
+    CoreSerialUart1DmaSendString("Down Key Press\r\n");
 }
 /**系统按键检测处理 */
 void KeyScanLoop(void)
@@ -67,6 +70,8 @@ void KeyScanLoop(void)
 
 int main(void)
 {
+    uint8_t* uart1RecvDatBufferPtr = NULL;
+    uint16_t recvLength = 0;
     /*初始化系统分组*/
     SystemUtilSetIntGroup();
     /*初始化延时函数*/
@@ -76,9 +81,18 @@ int main(void)
     /*初始化外部按键*/
     DeviceKeyInit();
     /**初始化串口 */
-    CoreSerialUart1GeneralInit(115200);
+    CoreSerialUart1DmaInit(115200);
+    /**初始化Beep */
+    DeviceBeepInit(BEEP_OFF);
     while(1)
     {
         KeyScanLoop();
+        recvLength = CoreSerialUart1DmaGetRecv(&uart1RecvDatBufferPtr);
+        if(recvLength != 0)
+        {
+            CoreSerialUart1DmaSendBuffer(uart1RecvDatBufferPtr,recvLength);
+            CoreSerialUart1DmaSendString("\r\n");
+            CoreSerialUart1DmaClearRx();
+        }
     }
 }

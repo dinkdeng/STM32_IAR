@@ -644,7 +644,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>STM32F103_STD_SERIAL_GENERAL.hex</state>
+                    <state>STM32F103_STD_SERIAL_BEEP.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -699,7 +699,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>STM32F103_STD_SERIAL_GENERAL.out</state>
+                    <state>STM32F103_STD_SERIAL_BEEP.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -1054,10 +1054,10 @@
             <group>
                 <name>CoreFunc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1General.c</name>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1Dma.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1General.h</name>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1Dma.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.c</name>
@@ -1068,6 +1068,12 @@
             </group>
             <group>
                 <name>DeviceFunc</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceBeep.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceBeep.h</name>
+                </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceKey.c</name>
                 </file>
