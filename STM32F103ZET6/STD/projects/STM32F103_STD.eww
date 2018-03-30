@@ -4,6 +4,9 @@
         <path>$WS_DIR$\007.Exti\ProjectFile\STM32F103_STD_EXTI.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\008.IWDG\ProjectFile\STM32F103_STD_IWDG.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\002.KeyScan\ProjectFile\STM32F103_STD_KEYSCAN.ewp</path>
     </project>
     <project>
@@ -20,6 +23,9 @@
     </project>
     <project>
         <path>$WS_DIR$\004.SerialInt\ProjectFile\STM32F103_STD_SERIAL_INT.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\009.WWDG\ProjectFile\STM32F103_STD_WWDG.ewp</path>
     </project>
     <batchBuild />
 </workspace>
