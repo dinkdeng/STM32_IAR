@@ -4,6 +4,9 @@
         <path>$WS_DIR$\010.AT24CXX\ProjectFile\STM32F103_STD_AT24CXX.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\012.DHT11\ProjectFile\STM32F103_STD_DHT11.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\011.DS18B20\ProjectFile\STM32F103_STD_DS18b20.ewp</path>
     </project>
     <project>
