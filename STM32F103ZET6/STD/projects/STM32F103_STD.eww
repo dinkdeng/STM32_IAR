@@ -40,6 +40,9 @@
         <path>$WS_DIR$\014.STMFLASH\ProjectFile\STM32F103_STD_STMFLASH.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\015.Timer3Count\ProjectFile\STM32F103_STD_TIMER3_COUNT.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\009.WWDG\ProjectFile\STM32F103_STD_WWDG.ewp</path>
     </project>
     <batchBuild />
