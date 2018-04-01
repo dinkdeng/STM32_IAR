@@ -19,6 +19,9 @@
         <path>$WS_DIR$\007.Exti\ProjectFile\STM32F103_STD_EXTI.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\019.ITEMP\ProjectFile\STM32F103_STD_ITEMP.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\008.IWDG\ProjectFile\STM32F103_STD_IWDG.ewp</path>
     </project>
     <project>
