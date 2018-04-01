@@ -46,6 +46,9 @@
         <path>$WS_DIR$\016.Timer3PWM\ProjectFile\STM32F103_STD_TIMER3_PWM.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\017.RS485\ProjectFile\STM32F103_STD_TIMER3_RS485.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\009.WWDG\ProjectFile\STM32F103_STD_WWDG.ewp</path>
     </project>
     <batchBuild />
