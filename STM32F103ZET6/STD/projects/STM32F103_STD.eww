@@ -46,6 +46,9 @@
         <path>$WS_DIR$\004.SerialInt\ProjectFile\STM32F103_STD_SERIAL_INT.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\021.SRAM\ProjectFile\STM32F103_STD_SRAM.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\014.STMFLASH\ProjectFile\STM32F103_STD_STMFLASH.ewp</path>
     </project>
     <project>
