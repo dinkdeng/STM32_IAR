@@ -699,7 +699,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>STM32F103_STD_NRF24L01.out</state>
+                    <state>STM32F103_STD_RTC.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>

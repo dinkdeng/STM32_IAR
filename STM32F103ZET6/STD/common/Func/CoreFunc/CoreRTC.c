@@ -77,12 +77,6 @@ static void CoreRTC_NVIC_Config(void)
     NVIC_Init(&NVIC_InitStructure);
 }
 
-/*设备初始化,根据不同的外部时钟确定*/
-void CoreRTCInit(CORE_RTC_CLOCK_TYPE type)
-{
-
-}
-
 /*获取时间*/
 void CoreRTCGetTime(CORE_RTC_TIME* rtcTime)
 {
@@ -206,8 +200,6 @@ uint8_t CoreRTCSetAlarm(CORE_RTC_TIME* alarmTime,CoreRTCCallBack alarmCallBack)
     RTC->CRH &= ~(RTC_CRH_ALRIE);
     if (alarmTime->year < 1970 || alarmTime->year>2099)
         return 1;
-    /**配置闹钟中断 */
-    CoreRTC_NVIC_Config();
     /*把所有年份的秒钟相加*/
     for (t = 1970; t < alarmTime->year; t++)
     {
@@ -253,9 +245,112 @@ uint8_t CoreRTCSetAlarm(CORE_RTC_TIME* alarmTime,CoreRTCCallBack alarmCallBack)
     PWR_BackupAccessCmd(DISABLE);
     /*允许闹钟中断*/
     RTC->CRH |= RTC_CRH_ALRIE;
+    /**配置闹钟中断 */
+    CoreRTC_NVIC_Config();
     coreCallBackFunc = alarmCallBack;
-    
     return 0;
+}
+
+
+/*设备初始化,根据不同的外部时钟确定*/
+uint8_t CoreRTCInit(CORE_RTC_TIME* rtcTime,CORE_RTC_CLOCK_TYPE type)
+{
+    uint8_t temp = 0;
+    //使能PWR和BKP外设时钟
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_BKP, ENABLE);
+    //使能后备寄存器访问
+    PWR_BackupAccessCmd(ENABLE);
+    //复位备份区域
+    BKP_DeInit();
+    if(type == CORE_RTC_CLOCK_LSI)
+    {
+        /**使用内部LSI */
+        RCC_LSICmd(ENABLE);
+        while (RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET)
+        {
+            temp++;
+            CORE_RTC_WAIT_MS(10);
+            if(temp > 50)
+                return 1;
+        }
+        //设置RTC时钟(RTCCLK),选择LSE作为RTC时钟
+        RCC_RTCCLKConfig(RCC_RTCCLKSource_LSI);
+    }
+    else
+    {
+        /**使用外部LSE */
+        //设置外部低速晶振(LSE),使用外设低速晶振
+        RCC_LSEConfig(RCC_LSE_ON);
+        //检查指定的RCC标志位设置与否,等待低速晶振就绪
+        while (RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)
+        {
+            temp++;
+            CORE_RTC_WAIT_MS(10);
+            if(temp > 50)
+                return 1;
+        }
+        //设置RTC时钟(RTCCLK),选择LSE作为RTC时钟
+        RCC_RTCCLKConfig(RCC_RTCCLKSource_LSE);
+    }
+     //使能RTC时钟
+    RCC_RTCCLKCmd(ENABLE);
+    //等待最近一次对RTC寄存器的写操作完成
+    RTC_WaitForLastTask();
+    //等待RTC寄存器同步
+    RTC_WaitForSynchro();
+    //等待最近一次对RTC寄存器的写操作完成
+    RTC_WaitForLastTask();
+    //允许配置
+    RTC_EnterConfigMode();
+    //设置RTC预分频的值
+    RTC_SetPrescaler(32767);
+    //等待最近一次对RTC寄存器的写操作完成
+    RTC_WaitForLastTask();
+
+    //从指定的后备寄存器中读出数据:读出了与写入的指定数据不相乎
+    if (BKP_ReadBackupRegister(BKP_DR1) != 0x5050)
+    {
+        if(rtcTime != NULL)
+        {
+            //设置时间
+            CoreRTCSetTime(rtcTime);
+            //退出配置模式
+            RTC_ExitConfigMode();
+            //向指定的后备寄存器中写入用户程序数据
+            BKP_WriteBackupRegister(BKP_DR1, 0X5050);
+            //等待最近一次对RTC寄存器的写操作完成
+            RTC_WaitForSynchro();
+        }
+
+    }
+    //等待最近一次对RTC寄存器的写操作完成
+    RTC_WaitForLastTask();
+    return 0;
+}
+
+
+/**RTC中断处理函数 */
+void RTC_IRQHandler(void)
+{
+    //秒钟中断
+    if (RTC_GetITStatus(RTC_IT_SEC) != RESET)
+    {
+        //清闹钟中断
+        RTC_ClearITPendingBit(RTC_IT_SEC);
+    }
+    //闹钟中断
+    if (RTC_GetITStatus(RTC_IT_ALR) != RESET)
+    {
+        //清闹钟中断
+        RTC_ClearITPendingBit(RTC_IT_ALR);
+        if(coreCallBackFunc != NULL)
+        {
+            coreCallBackFunc();
+        }
+    }
+    //清闹钟中断
+    RTC_ClearITPendingBit(RTC_IT_OW);
+    RTC_WaitForLastTask();
 }
 
 

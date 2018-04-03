@@ -30,8 +30,10 @@ typedef enum CORE_RTC_CLOCK_TYPE
 /**子中断优先级 */
 #define CORE_RTC_ALARM_SUB_PRI      INT_SUB_PRI_3
 
+#define CORE_RTC_WAIT_MS(nms)       CoreTickDelayMs(nms)
+
 /*设备初始化,根据不同的外部时钟确定*/
-void CoreRTCInit(CORE_RTC_CLOCK_TYPE type);
+uint8_t CoreRTCInit(CORE_RTC_TIME* rtcTime,CORE_RTC_CLOCK_TYPE type);
 
 /*获取时间*/
 void CoreRTCGetTime(CORE_RTC_TIME* rtcTime);
