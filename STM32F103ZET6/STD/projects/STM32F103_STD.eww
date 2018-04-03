@@ -37,6 +37,12 @@
         <path>$WS_DIR$\022.MemManager\ProjectFile\STM32F103_STD_MEM_MANAGER.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\024.NRF24L01\ProjectFile\STM32F103_STD_NRF24L01.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\025.RTC\ProjectFile\STM32F103_STD_RTC.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\006.Beep\ProjectFile\STM32F103_STD_SERIAL_BEEP.ewp</path>
     </project>
     <project>

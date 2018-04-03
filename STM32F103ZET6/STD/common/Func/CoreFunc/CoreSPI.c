@@ -16,6 +16,9 @@ void CoreSPI1Init(uint16_t cpol,uint16_t cpha,uint16_t speed)
     GPIO_Init(GPIOA, &GPIO_InitStructure);
     //PA5.6.7上拉
     GPIO_SetBits(GPIOA, GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7);
+
+    SPI_Cmd(SPI1,DISABLE);
+    
     //设置SPI单向或者双向的数据模式:SPI设置为双线双向全双工
     SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
     //设置SPI工作模式:设置为主SPI
@@ -112,6 +115,7 @@ void CoreSPI2Init(uint16_t cpol,uint16_t cpha,uint16_t speed)
     //PB13/14/15上拉
     GPIO_SetBits(GPIOB, GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
 
+    SPI_Cmd(SPI2,DISABLE);
     //设置SPI单向或者双向的数据模式:SPI设置为双线双向全双工
     SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
     //设置SPI工作模式:设置为主SPI
