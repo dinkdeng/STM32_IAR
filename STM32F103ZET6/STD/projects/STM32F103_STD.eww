@@ -10,6 +10,9 @@
         <path>$WS_DIR$\010.AT24CXX\ProjectFile\STM32F103_STD_AT24CXX.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\028.CAN\ProjectFile\STM32F103_STD_CAN.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\020.DAC\ProjectFile\STM32F103_STD_DAC.ewp</path>
     </project>
     <project>
