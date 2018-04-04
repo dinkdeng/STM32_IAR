@@ -2,13 +2,7 @@
 #include "CoreTickDelay.h"
 #include "SystemUtil.h"
 
-/*初始化默认时间*/
-#define RTC_DEFAULT_YEAR        2018
-#define RTC_DEFAULT_MOUTH       04
-#define RTC_DEFAULT_DAY         03
-#define RTC_DEFAULT_HOUR        15
-#define RTC_DEFAULT_MIN         33
-#define RTC_DEFAULT_SEC         17
+
 
 
 /*月修正数据表*/

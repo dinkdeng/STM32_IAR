@@ -14,6 +14,18 @@
 
 CORE_RTC_TIME systemRtc = {0};
 
+void SetDefaultTime(CORE_RTC_TIME* rtcTime)
+{
+    rtcTime->year = 2018;
+    rtcTime->month = 4;
+    rtcTime->day = 4;
+    rtcTime->week = 3;
+    rtcTime->hour = 11;
+    rtcTime->minute = 4;
+    rtcTime->minute = 4;
+    rtcTime->second = 0;
+}
+
 void RTC_Printf(CORE_RTC_TIME* rtcTime)
 {
 
@@ -29,6 +41,7 @@ void RTCTest()
     {
         DeviceExtiClear(EXTI_LEFT);
         printf("Left Key Event\r\n");
+        printf("Get SystemTime\r\n");
         CoreRTCGetTime(&systemRtc);
         RTC_Printf(&systemRtc);
     }
@@ -36,6 +49,10 @@ void RTCTest()
     {
         DeviceExtiClear(EXTI_RIGHT);
         printf("Right Key Event\r\n");
+        printf("Set SystemTime\r\n");
+        SetDefaultTime(&systemRtc);
+        CoreRTCSetTime(&systemRtc);
+        RTC_Printf(&systemRtc);
     }
     if(DeviceExtiGetCount(EXTI_UP) > 0)
     {
