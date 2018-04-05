@@ -49,6 +49,9 @@
         <path>$WS_DIR$\024.NRF24L01\ProjectFile\STM32F103_STD_NRF24L01.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\035.PWM_DAC\ProjectFile\STM32F103_STD_PWM_DAC.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\025.RTC\ProjectFile\STM32F103_STD_RTC.ewp</path>
     </project>
     <project>
