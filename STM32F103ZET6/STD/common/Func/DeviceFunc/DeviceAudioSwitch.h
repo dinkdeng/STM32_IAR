@@ -1,0 +1,24 @@
+#ifndef __DEVICE_AUDIO_SWITCH_H_
+#define __DEVICE_AUDIO_SWITCH_H_
+#include "stm32f10x.h"
+
+typedef enum DEVICE_AUDIO_SWITCH_CHANNEL
+{
+    DEVICE_AUDIO_SWITCH_MP3 = 0,
+    DEVICE_AUDIO_SWITCH_RADIO = 1,
+    DEVICE_AUDIO_SWITCH_PWM = 2,
+    DEVICE_AUDIO_SWITCH_NONE = 3,
+}DEVICE_AUDIO_SWITCH_CHANNEL;
+
+void DeviceAudioSwitchInit(DEVICE_AUDIO_SWITCH_CHANNEL initChannel);
+
+void DeviceAudioSwitchSet(DEVICE_AUDIO_SWITCH_CHANNEL setChannel);
+
+
+#endif
+
+
+
+
+
+

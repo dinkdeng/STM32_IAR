@@ -6,7 +6,8 @@
 	],
 	"settings": {
 		"files.associations": {
-			"deviceled.h": "c"
+			"deviceled.h": "c",
+			"systemutil.h": "c"
 		}
 	}
 }
