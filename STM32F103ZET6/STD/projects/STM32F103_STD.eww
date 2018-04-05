@@ -28,6 +28,9 @@
         <path>$WS_DIR$\027.FCPAD\ProjectFile\STM32F103_STD_FCPAD.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\026.IR\ProjectFile\STM32F103_STD_IR.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\019.ITEMP\ProjectFile\STM32F103_STD_ITEMP.ewp</path>
     </project>
     <project>
