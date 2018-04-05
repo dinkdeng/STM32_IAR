@@ -37,6 +37,9 @@
         <path>$WS_DIR$\008.IWDG\ProjectFile\STM32F103_STD_IWDG.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\036.KEY_CAPTURE\ProjectFile\STM32F103_STD_KEY_CAPTURE.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\002.KeyScan\ProjectFile\STM32F103_STD_KEYSCAN.ewp</path>
     </project>
     <project>
