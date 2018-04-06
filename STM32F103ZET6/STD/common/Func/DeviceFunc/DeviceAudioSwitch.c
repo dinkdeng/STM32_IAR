@@ -4,8 +4,8 @@
 /**使用74HC4052来控制切换 */
 
 //4052控制设置端口
-#define DeviceAudioSwitchSetPinA(n)	        (PBout(7) = n)
-#define DeviceAudioSwitchSetPinB(n)	        (PDout(7) = n)
+#define DeviceAudioSwitchSetPinA(n)	        (PDout(7) = n)
+#define DeviceAudioSwitchSetPinB(n)	        (PBout(7) = n)
 
 void DeviceAudioSwitchInit(DEVICE_AUDIO_SWITCH_CHANNEL initChannel)
 {
@@ -24,7 +24,7 @@ void DeviceAudioSwitchInit(DEVICE_AUDIO_SWITCH_CHANNEL initChannel)
  	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;
 	GPIO_Init(GPIOD, &GPIO_InitStructure); 
 
-    DeviceAudioSwitchSet(DEVICE_AUDIO_SWITCH_NONE);
+    DeviceAudioSwitchSet(initChannel);
 }
 
 void DeviceAudioSwitchSet(DEVICE_AUDIO_SWITCH_CHANNEL setChannel)

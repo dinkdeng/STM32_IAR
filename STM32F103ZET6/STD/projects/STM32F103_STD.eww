@@ -58,6 +58,9 @@
         <path>$WS_DIR$\035.PWM_DAC\ProjectFile\STM32F103_STD_PWM_DAC.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\032.RDA5820\ProjectFile\STM32F103_STD_RDA5820.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\025.RTC\ProjectFile\STM32F103_STD_RTC.ewp</path>
     </project>
     <project>
