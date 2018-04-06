@@ -61,6 +61,9 @@
         <path>$WS_DIR$\025.RTC\ProjectFile\STM32F103_STD_RTC.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\029.SD\ProjectFile\STM32F103_STD_SD.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\006.Beep\ProjectFile\STM32F103_STD_SERIAL_BEEP.ewp</path>
     </project>
     <project>
