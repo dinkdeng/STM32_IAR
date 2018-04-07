@@ -94,6 +94,9 @@
         <path>$WS_DIR$\017.RS485\ProjectFile\STM32F103_STD_TIMER3_RS485.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\031.VS10XX\ProjectFile\STM32F103_STD_VS10XX.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\023.W25QXX\ProjectFile\STM32F103_STD_W25QXX.ewp</path>
     </project>
     <project>

@@ -7,59 +7,30 @@
 #include "DeviceBeep.h"
 #include "DeviceSRAM.h"
 #include "DeviceAudioSwitch.h"
-#include "DeviceRDA5820.h"
+#include "DeviceVS10xx.h"
 
-/**设置基础频率 */
-uint16_t baseFreq = 8700;
 
-void SystemRDA5820_AutoScan(void)
-{
-    uint16_t currentSingleStrength = 0;
-    printf("Auto Scan Start\r\n");
-    baseFreq += 100;
-    for(;baseFreq < 10800;baseFreq+=10)
-    {
-        DeviceRDA520_SetFreq(baseFreq);
-        CoreTickDelayMs(200);
-        currentSingleStrength = DeviceRDA5820_GetSingleStrength();
-        printf("Current Freq : %0.2f , currentSingleStrength : %d \r\n",baseFreq/100.0,currentSingleStrength);
-        if(DeviceRDA5820_CurrentFreqIsAState())
-        {
-            DeviceRDA520_SetFreq(baseFreq);
-            break;
-        }
-    }
-    printf("Auto Scan End\r\n");
-}
-
-void SystemRDA5820_Test()
+void SystemVS10XX_Test()
 {
     if(DeviceExtiGetCount(EXTI_LEFT) > 0)
     {
         DeviceExtiClear(EXTI_LEFT);
         printf("Left Key Event\r\n");
-        baseFreq += 10;
-        if(baseFreq > 10800)
-            baseFreq = 10800;
-        DeviceRDA520_SetFreq(baseFreq);
-        CoreTickDelayMs(20);
-        printf("Current Freq %0.2f , Single Strength %d\r\n",baseFreq/100.0,DeviceRDA5820_GetSingleStrength());
+        DeviceVS10xxSineTest();
+        printf("Sine Test Over\r\n");
+        DeviceExtiClear(EXTI_LEFT);
     }
     if(DeviceExtiGetCount(EXTI_RIGHT) > 0)
     {
         DeviceExtiClear(EXTI_RIGHT);
         printf("Right Key Event\r\n");
-        baseFreq = 8700;
-        DeviceRDA520_SetFreq(baseFreq);
-        CoreTickDelayMs(20);
-        printf("Current Freq %0.2f , Single Strength %d\r\n",baseFreq/100.0,DeviceRDA5820_GetSingleStrength());
+
     }
     if(DeviceExtiGetCount(EXTI_DOWN) > 0)
     {
         DeviceExtiClear(EXTI_DOWN);
         printf("Down Key Event\r\n");
-        SystemRDA5820_AutoScan();
-        DeviceExtiClear(EXTI_DOWN);
+
     }
     if(DeviceExtiGetCount(EXTI_UP) > 0)
     {
@@ -89,22 +60,21 @@ int main(void)
     CoreSerialUart1DmaSendString("SystemInit\r\n");
     /**初始化Beep */
     DeviceBeepInit(BEEP_OFF);
-    DeviceAudioSwitchInit(DEVICE_AUDIO_SWITCH_RADIO);
+    DeviceAudioSwitchInit(DEVICE_AUDIO_SWITCH_MP3);
     /**初始化sram*/
     while(0 != DeviceSRAMInit())
     {
         printf("SRAM Init Failed\r\n");
         CoreTickDelayMs(500);
     }
-    /**RDA5820初始化 */
-    while(DeviceRDA5820_Init(RDA5820_BAUD_87_108MHZ,RDA5820_RESOLUTION_100K,9600,15) != 0)
+    while(DeviceVS1053Init())
     {
-        printf("DeviceRDA5820_Init Failed\r\n");
+        printf("DeviceVS1053Init Failed\r\n");
         CoreTickDelayMs(500);
     }
     while(1)
     {
-        SystemRDA5820_Test();
+        SystemVS10XX_Test();
         recvLength = CoreSerialUart1DmaGetRecv(&uartRecvDatBufferPtr);
         if(recvLength != 0)
         {
