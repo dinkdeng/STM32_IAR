@@ -55,6 +55,9 @@
         <path>$WS_DIR$\022.MemManager\ProjectFile\STM32F103_STD_MEM_MANAGER.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\037.MusicBase\ProjectFile\STM32F103_STD_MusicBase.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\024.NRF24L01\ProjectFile\STM32F103_STD_NRF24L01.ewp</path>
     </project>
     <project>

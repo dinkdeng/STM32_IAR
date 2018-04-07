@@ -77,11 +77,8 @@ static void DeviceVS10xxIO_Init(void)
 	GPIO_Init(GPIOF, &GPIO_InitStructure);
 
 	CoreSPI1Init(DEVICE_VS10XX_CPOL,DEVICE_VS10XX_CPHA,DEVICE_VS10XX_SPEED_LOW);
-}
 
-static void DeviceVS10xxSetDefaultCp(void)
-{
-    CoreSPI1SetCp(DEVICE_VS10XX_CPOL,DEVICE_VS10XX_CPHA);
+	DeviceVS10xxHardwareReset();
 }
 
 static void DeviceVS10xxSetSpeedLow(void)
@@ -102,7 +99,7 @@ static uint8_t DeviceVS10xxWriteRead(uint8_t byteValue)
 static void DeviceVS10xxWriteCommand(uint8_t addr,uint16_t command)
 {
     /**等待空闲 */
-    while(DeviceVS10xxGetDQ()==0);
+    while(DeviceVS10xxGetDQ() == 0);
     /**低速*/
 	DeviceVS10xxSetSpeedLow();
 	DeviceVS10xxXdcsSet(1);
@@ -171,9 +168,8 @@ uint16_t DeviceVS10xxReadWRAM(uint16_t addr)
 void DeviceVS10xxSoftReset(void)
 {
     uint8_t retry=0;
-    DeviceVS10xxSetDefaultCp();
     /**等待软件复位结束*/
-	while(DeviceVS10xxGetDQ()==0);
+	while(DeviceVS10xxGetDQ() == 0);
     /**启动传输*/
 	DeviceVS10xxWriteRead(0Xff);
 	retry=0;
@@ -205,7 +201,6 @@ void DeviceVS10xxSoftReset(void)
 uint8_t DeviceVS10xxHardwareReset(void)
 {
     uint8_t retry=0;
-    DeviceVS10xxSetDefaultCp();
 	DeviceVS10xxRstSet(0);
 	CoreTickDelayMs(20);
     /**取消数据传输 */
@@ -215,7 +210,7 @@ uint8_t DeviceVS10xxHardwareReset(void)
     /**芯片复位 */
 	DeviceVS10xxRstSet(1);
     /**等待DREQ为高 */
-	while(DeviceVS10xxGetDQ()==0&&retry<200)
+	while(DeviceVS10xxGetDQ() == 0 && retry<200)
 	{
 		retry++;
 		CoreTickDelayUs(50);
@@ -230,14 +225,13 @@ uint8_t DeviceVS10xxHardwareReset(void)
 //正弦测试
 void DeviceVS10xxSineTest(void)
 {
-    DeviceVS10xxSetDefaultCp();
 	DeviceVS10xxHardwareReset();
     /**设置音量*/
 	DeviceVS10xxWriteCommand(0x0b,0X2020);
     /**进入VS10XX的测试模式*/
  	DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_MODE,0x0820);
     /**等待DREQ为高*/
-	while(DeviceVS10xxGetDQ()==0);
+	while(0 == DeviceVS10xxGetDQ());
     /**低速 */
   	DeviceVS10xxSetSpeedLow();
     /**选中数据传输 */
@@ -299,12 +293,11 @@ void DeviceVS10xxSineTest(void)
 //VS1003如果得到的值为0x807F，则表明完好;VS1053为0X83FF.
 uint16_t DeviceVS10xxRamTest(void)
 {
-    DeviceVS10xxSetDefaultCp();
 	DeviceVS10xxHardwareReset();
     /**进入VS10XX的测试模式 */
  	DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_MODE,0x0820);
     /**等待DREQ为高	 */
-	while (DeviceVS10xxGetDQ()==0);
+	while (0 == DeviceVS10xxGetDQ());
     /**低速*/
  	DeviceVS10xxSetSpeedLow();
     /**xDCS = 1，选择VS10XX的数据接口 */
@@ -326,11 +319,13 @@ uint16_t DeviceVS10xxRamTest(void)
 
 void DeviceVS10xxSetPlaySpeed(uint8_t speedMul)
 {
-    DeviceVS10xxSetDefaultCp();
     /**速度控制地址  */
     DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_WRAMADDR,0X1E04);
     /**等待空闲*/
-	while(DeviceVS10xxGetDQ()==0);
+	while(0 == DeviceVS10xxGetDQ())
+	{
+		CoreTickDelayUs(1);
+	}
     /**写入播放速度 */
 	DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_WRAM,speedMul);
 }
@@ -352,7 +347,6 @@ uint16_t DeviceVS10xxGetKbpsInfo(void)
 {
 	uint32_t HEAD0;
 	uint32_t HEAD1;
-    DeviceVS10xxSetDefaultCp();
  	HEAD0=DeviceVS10xxReadReg(DEVICE_VS10XX_SPI_HDAT0);
     HEAD1=DeviceVS10xxReadReg(DEVICE_VS10XX_SPI_HDAT1);
     switch(HEAD1)
@@ -391,7 +385,6 @@ uint16_t DeviceVS10xxGetKbpsInfo(void)
 //返回值：平均字节数速度
 uint16_t DeviceVS10xxGetBitRate(void)
 {
-    DeviceVS10xxSetDefaultCp();
     /**平均位速 */
 	return DeviceVS10xxReadWRAM(0X1E05);
 }
@@ -400,7 +393,6 @@ uint16_t DeviceVS10xxGetBitRate(void)
 //返回值:需要填充的数字
 uint16_t DeviceVS10xxGetEndFillByte(void)
 {
-    DeviceVS10xxSetDefaultCp();
     /**填充字节 */
 	return DeviceVS10xxReadWRAM(0X1E06);
 }
@@ -412,10 +404,9 @@ uint16_t DeviceVS10xxGetEndFillByte(void)
 uint8_t DeviceVS10xxSendMusicData(uint8_t* buf)
 {
 	u8 n;
-    DeviceVS10xxSetDefaultCp();
     DeviceVS10xxSetSpeedHigh();
     /**送数据给VS10XX */
-	if(DeviceVS10xxGetDQ()!=0)
+	if(0 != DeviceVS10xxGetDQ())
 	{
 		DeviceVS10xxXdcsSet(0);
         for(n=0;n<32;n++)
@@ -437,7 +428,6 @@ void DeviceVS10xxRestartPlay(void)
 	uint16_t i;
 	uint8_t n;
 	uint8_t vsbuf[32];
-    DeviceVS10xxSetDefaultCp();
     /**清零 */
 	for(n=0;n<32;n++)
         vsbuf[n]=0;
@@ -453,7 +443,7 @@ void DeviceVS10xxRestartPlay(void)
 	for(i=0;i<2048;)
 	{
         /**每发送32个字节后检测一次 */
-		if(DeviceVS10xxSendMusicData(vsbuf)==0)
+		if(DeviceVS10xxSendMusicData(vsbuf) == 0)
 		{
             /**发送了32个字节 */
 			i += 32;
@@ -495,7 +485,6 @@ void DeviceVS10xxRestartPlay(void)
 //重设解码时间
 void DeviceVS10xxResetDecodeTime(void)
 {
-    DeviceVS10xxSetDefaultCp();
 	DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_DECODE_TIME,0x0000);
     /**操作两次 */
 	DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_DECODE_TIME,0x0000);
@@ -506,7 +495,6 @@ void DeviceVS10xxResetDecodeTime(void)
 uint16_t DeviceVS10xxGetDecodeTime(void)
 {
 	uint16_t dt=0;
-    DeviceVS10xxSetDefaultCp();
 	dt=DeviceVS10xxReadReg(DEVICE_VS10XX_SPI_DECODE_TIME);
  	return dt;
 }
@@ -517,7 +505,6 @@ void DeviceVS10xxLoadPatch(uint16_t *patch,uint16_t len)
 {
 	uint16_t i;
 	uint16_t addr, n, val;
-    DeviceVS10xxSetDefaultCp();
 	for(i=0;i<len;)
 	{
 		addr = patch[i++];
@@ -553,7 +540,6 @@ void DeviceVS10xxSetVol(uint8_t volx)
 	volt<<=8;
     /**得到音量设置后大小 */
     volt+=254-volx;
-    DeviceVS10xxSetDefaultCp();
     /**设音量  */
     DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_VOL,volt);
 }
@@ -586,7 +572,6 @@ void DeviceVS10xxSetBass(uint8_t bfreq,uint8_t bass,uint8_t tfreq,uint8_t treble
 	bass_set<<=4;
     /**低音上限  */
 	bass_set+=bfreq&0xf;
-    DeviceVS10xxSetDefaultCp();
     /**BASS*/
 	DeviceVS10xxWriteCommand(DEVICE_VS10XX_SPI_BASS,bass_set);
 }
@@ -596,7 +581,6 @@ void DeviceVS10xxSetBass(uint8_t bfreq,uint8_t bass,uint8_t tfreq,uint8_t treble
 void DeviceVS10xxSetEffect(uint8_t eft)
 {
 	uint16_t temp;
-    DeviceVS10xxSetDefaultCp();
     /**读取SPI_MODE的内容 */
 	temp=DeviceVS10xxReadReg(DEVICE_VS10XX_SPI_MODE);
     /**设定LO */
@@ -627,9 +611,9 @@ void DeviceVS10xxSetAllDefault(void)
 uint8_t DeviceVS1053Init(void)
 {
     DeviceVS10xxIO_Init();
-    DeviceVS10xxSetAllDefault();
     if(DEVICE_VS1053_ID == DeviceVS10xxRamTest())
     {
+        DeviceVS10xxSetAllDefault();
         return 0;
     }
     return 1;

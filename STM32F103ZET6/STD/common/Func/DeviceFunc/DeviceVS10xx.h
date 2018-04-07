@@ -5,7 +5,8 @@
 #define DEVICE_VS10XX_CPOL              CORE_SPI_CPOL_HIGH
 #define DEVICE_VS10XX_CPHA              CORE_SPI_CPHA_2EDGE
 
-#define DEVICE_VS10XX_SPEED_LOW         CORE_SPI_SPEED_32
+#define DEVICE_VS10XX_SPEED_LOW         CORE_SPI_SPEED_256
+
 #define DEVICE_VS10XX_SPEED_HIGH        CORE_SPI_SPEED_8
 
 #define DEVICE_VS10XX_SINE_TEST_MS              1000
@@ -95,6 +96,9 @@ uint8_t DeviceVS10xxHardwareReset(void);
 
 /**软复位 */
 void DeviceVS10xxSoftReset(void);
+
+//设置音量,音效等.
+void DeviceVS10xxSetAllDefault(void);
 
 
 

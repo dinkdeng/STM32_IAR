@@ -6,7 +6,7 @@ void CoreSPI1Init(uint16_t cpol,uint16_t cpha,uint16_t speed)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     SPI_InitTypeDef  SPI_InitStructure;
-    //PORTB，SPI2时钟使能
+    //PORTB，SPI1时钟使能
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_SPI1, ENABLE);
 
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
@@ -17,8 +17,6 @@ void CoreSPI1Init(uint16_t cpol,uint16_t cpha,uint16_t speed)
     //PA5.6.7上拉
     GPIO_SetBits(GPIOA, GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7);
 
-    SPI_Cmd(SPI1,DISABLE);
-    
     //设置SPI单向或者双向的数据模式:SPI设置为双线双向全双工
     SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
     //设置SPI工作模式:设置为主SPI
@@ -41,8 +39,6 @@ void CoreSPI1Init(uint16_t cpol,uint16_t cpha,uint16_t speed)
     SPI_Init(SPI1, &SPI_InitStructure);
     //使能SPI外设
     SPI_Cmd(SPI1, ENABLE);
-    //启动传输
-    CoreSPI1WriteRead(0xff);
 }
 
 /**SPI1读写 */
@@ -72,7 +68,6 @@ uint8_t CoreSPI1WriteRead(uint8_t writeDat)
 /**SPI1设置速度 */
 void CoreSPI1SetSpeed(uint16_t speed)
 {
-    SPI_Cmd(SPI1, DISABLE);
     SPI1->CR1 &= 0XFFC7;
     SPI1->CR1 |= speed;
     SPI_Cmd(SPI1, ENABLE);
@@ -86,7 +81,6 @@ void CoreSPI1SetCp(uint16_t cpol,uint16_t cpha)
     setValue = (cpol|cpha);
     setValue &= 0x0003;
 
-    SPI_Cmd(SPI1, DISABLE);
     /**清空设置值 */
     SPI1->CR1 &= ~(0x0003);
     SPI1->CR1 |= setValue;
