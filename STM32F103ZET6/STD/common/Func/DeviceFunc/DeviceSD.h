@@ -37,6 +37,14 @@ uint8_t DeviceSD_Get_CID_Info(uint8_t* cid_data);
 /**获取CSD信息 */
 uint8_t DeviceSD_Get_CSD_Info(uint8_t* csd_data);
 
+
+/**支援FATFS */
+uint8_t DeviceSD_ReadWriteByte(u8 data);
+void DeviceSD_SpeedLow(void);
+//SD卡正常工作的时候,可以高速了
+void DeviceSD_SpeedHigh(void);
+uint8_t DeviceSD_WaitReady(void);
+
 #endif
 
 

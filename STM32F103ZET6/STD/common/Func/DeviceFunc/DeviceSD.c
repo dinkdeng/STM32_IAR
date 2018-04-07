@@ -42,18 +42,18 @@
 uint8_t  SD_Type=0;
 
 
-static uint8_t DeviceSD_ReadWriteByte(u8 data)
+uint8_t DeviceSD_ReadWriteByte(u8 data)
 {
 	return CoreSPI2WriteRead(data);
 }
 //SD卡初始化的时候,需要低速
-static void DeviceSD_SpeedLow(void)
+void DeviceSD_SpeedLow(void)
 {
     /**设置到低速模式	 */
  	CoreSPI2SetSpeed(DEVICE_SD_SPI_SPEED_LOW);
 }
 //SD卡正常工作的时候,可以高速了
-static void DeviceSD_SpeedHigh(void)
+void DeviceSD_SpeedHigh(void)
 {
     /**设置到高速模式	 */
  	CoreSPI2SetSpeed(DEVICE_SD_SPI_SPEED_HIGH);
@@ -111,7 +111,7 @@ static void DeviceSD_DisSelect(void)
 
 //等待卡准备好
 //返回值:0,准备好了;其他,错误代码
-static uint8_t DeviceSD_WaitReady(void)
+uint8_t DeviceSD_WaitReady(void)
 {
 	uint32_t t=0;
 	do

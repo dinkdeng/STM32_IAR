@@ -52,6 +52,7 @@
                 "${workspaceRoot}/common/Func/DeviceFunc",
                 "${workspaceRoot}/common/Func/DinkFunc",
                 "${workspaceRoot}/common/Func/SupportFunc",
+                "${workspaceRoot}/common/Func/Fatfs",
                 "${workspaceRoot}/common/lib/inc",
                 "${workspaceRoot}/common/startup"
             ],
