@@ -146,9 +146,11 @@ void CoreSerialUart1DMA_SendBuffer(uint8_t* bufferPtr,uint16_t length)
     }
     else
     {
-        //等待上一次DMA传输完成
+		/**要防止DMA正在传输的时候,buffer被别人填充掉了 */
+		/**如果使用操作系统,要对缓冲区的资源加锁,防止他人占用 */
+		//等待上一次DMA传输完成
         while(DMA_GetFlagStatus(DMA2_Stream7,DMA_FLAG_TCIF7)==RESET);
-        //清除DMA2_Steam7传输完成标志
+		//清除DMA2_Steam7传输完成标志
         DMA_ClearFlag(DMA2_Stream7,DMA_FLAG_TCIF7);
         //关闭DMA传输
         DMA_Cmd(DMA2_Stream7, DISABLE);
@@ -217,19 +219,21 @@ void USART1_IRQHandler(void)
 
 /**系统的printf支持,如果使用该实现,需要选择Full库模式,同时选中semihosted功能*/
 /**同时为printf加上多字节支持,否则请使用单字节的putchar,不要使用DMA*/
-size_t __write(int handle,const unsigned char *buf,size_t bufSize)
+/**用这个函数,可能会导致连续两次printf,第一个DMA正在传输数据的时候,第二个printf去填充了缓冲区 */
+/**所以不是线程安全的 */
+// size_t __write(int handle,const unsigned char *buf,size_t bufSize)
+// {
+//     if(bufSize == 0)
+//         return 0;
+//     CoreSerialUart1DMA_SendBuffer((uint8_t*)buf,(uint16_t)bufSize);
+//     return bufSize;
+//     /**出错返回-1*/
+// }
+
+/*重定向系统printf库.*/
+int putchar(int ch)
 {
-    if(bufSize == 0)
-        return 0;
-    if(bufSize == 1)
-    {
-        CoreSerialUart1DMA_SendByte(*buf);
-        return 1;
-    }
-    else
-    {
-        CoreSerialUart1DMA_SendBuffer((uint8_t*)buf,(uint16_t)bufSize);
-        return bufSize;
-    }
-    /**出错返回-1*/
+    CoreSerialUart1DMA_SendByte(ch);
+    return ch;
 }
+

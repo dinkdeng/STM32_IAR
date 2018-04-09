@@ -5,9 +5,9 @@
 
 typedef void (*CoreSerialUart1DMA_CallBackFunc)(uint8_t byteValue);
 
-#define CORE_SERIAL_UART1_DMA_PERR_PRI      INT_PRE_PRI_2
+#define CORE_SERIAL_UART1_DMA_PERR_PRI      INT_PRE_PRI_0
 
-#define CORE_SERIAL_UART1_DMA_SUB_PRI       INT_SUB_PRI_0
+#define CORE_SERIAL_UART1_DMA_SUB_PRI       INT_SUB_PRI_3
 
 /**初始化*/
 void CoreSerialUart1DMA_Init(uint32_t bpsSet,CoreSerialUart1DMA_CallBackFunc callBackFuncPtr);
