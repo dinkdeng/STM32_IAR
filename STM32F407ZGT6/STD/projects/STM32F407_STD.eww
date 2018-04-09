@@ -24,5 +24,8 @@
     <project>
         <path>$WS_DIR$\005.SerialInt\ProjectFile\STM32_F407_STD_SERIAL_INT.ewp</path>
     </project>
+    <project>
+        <path>$WS_DIR$\009.WWDG\ProjectFile\STM32_F407_STD_WWDG.ewp</path>
+    </project>
     <batchBuild />
 </workspace>

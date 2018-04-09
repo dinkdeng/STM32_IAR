@@ -1205,6 +1205,12 @@
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.h</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreWWDG.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreWWDG.h</name>
+                </file>
             </group>
             <group>
                 <name>DeviceFunc</name>
