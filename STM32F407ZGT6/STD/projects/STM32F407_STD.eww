@@ -7,6 +7,9 @@
         <path>$WS_DIR$\007.Exti\ProjectFile\STM32_F407_STD_EXTI.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\008.IWDG\ProjectFile\STM32_F407_STD_IWDG.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\002.KEYSCAN\ProjectFile\STM32_F407_STD_KEYSCAN.ewp</path>
     </project>
     <project>
