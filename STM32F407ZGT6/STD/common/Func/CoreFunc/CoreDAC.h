@@ -6,7 +6,7 @@
 void CoreDAC_Init(void);
 
 /**DAC设置参数值 */
-void CoreDAC_SetValue(uint32_t channel, uint16_t vol);
+void CoreDAC_SetValue(uint16_t vol);
 
 #endif
 

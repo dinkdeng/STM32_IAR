@@ -40,11 +40,11 @@ void CoreDAC_Init(void)
 /**DAC设置参数值 */
 //设置通道1输出电压
 //vol:0~3300,代表0~3.3V
-void CoreDAC_SetValue(uint32_t channel, uint16_t vol)
+void CoreDAC_SetValue(uint16_t vol)
 {
     double temp=vol;
-	temp/=1000;
-	temp=temp*4096/3.3;
+	temp /= 1000.0;
+	temp = (temp*4096)/3.3;
 	//12位右对齐数据格式设置DAC值
 	DAC_SetChannel1Data(DAC_Align_12b_R,(uint16_t)temp);
 }

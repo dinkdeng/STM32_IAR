@@ -8,25 +8,40 @@
 #include "DeviceExti.h"
 #include "CoreWWDG.h"
 #include "CoreADC.h"
-#include "CoreChipTempSensor.h"
-#include "DeviceLightSensor.h"
+#include "CoreDAC.h"
 
 
 void DeviceLeftExtiProcess()
 {
     DeviceExtiClear(EXTI_LEFT);
     printf("Left Exti Press\r\n");
-    printf("ADC Value : %d\r\n",CoreADC_GetValueBychannel(ADC_Channel_5,10));
-    printf("Chip Temp Value : %0.2f\r\n",CoreChipTempSensorGet(10));
-    printf("Light Sensor :%d \r\n",DeviceLightSensorGetPowerful(10));
+    uint16_t adcValue = CoreADC_GetValueBychannel(ADC_Channel_5,10);
+    printf("ADC Value : %d , Vol : %0.2f\r\n",adcValue,(adcValue*3.3)/4096);
 }
+
+uint16_t dacSetValue = 0;
 
 void DeviceDownExtiProcess()
 {
     DeviceExtiClear(EXTI_DOWN);
     printf("Down Exti Press\r\n");
+    dacSetValue -= 10;
+    if(dacSetValue > 3300)
+        dacSetValue = 0;
+    CoreDAC_SetValue(dacSetValue);
+    printf("DAC Set Value : %d , Vol : %0.2f \r\n",dacSetValue,dacSetValue/1000.0);
 }
 
+void DeviceUpExtiProcess()
+{
+    DeviceExtiClear(EXTI_UP);
+    printf("Up Exti Press\r\n");
+    dacSetValue += 10;
+    if(dacSetValue > 3300)
+        dacSetValue = 3300;
+    CoreDAC_SetValue(dacSetValue);
+    printf("DAC Set Value : %d , Vol : %0.2f \r\n",dacSetValue,dacSetValue/1000.0);
+}
 
 /**系统按键检测处理 */
 void ExtiCheckLoop(void)
@@ -39,6 +54,10 @@ void ExtiCheckLoop(void)
     {
         DeviceDownExtiProcess();
     }
+    if(DeviceExtiGetCount(EXTI_UP) > 0)
+    {
+        DeviceUpExtiProcess();
+    }
 }
 
 int main(void)
@@ -49,13 +68,14 @@ int main(void)
     /*初始化EXTI*/
     DeviceExtiInit(EXTI_LEFT);
     DeviceExtiInit(EXTI_DOWN);
+    DeviceExtiInit(EXTI_UP);
     /**蜂鸣器初始化 */
     DeviceBeepInit(BEEP_OFF);
     CoreSerialUart1DMA_Init(115200,CoreSerialUart1DMA_DefaultCallBack);
     /**ADC初始化*/
     CoreADC_Init();
-    CoreChipTempSensorInit();
-    DeviceLightSensorInit();
+    /**DAC初始化*/
+    CoreDAC_Init();
     printf("System Init Over\r\n");
     while(1)
     {
@@ -63,3 +83,7 @@ int main(void)
         CoreTickDelayMs(100);
     }
 }
+
+
+
+

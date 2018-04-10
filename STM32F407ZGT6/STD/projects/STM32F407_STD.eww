@@ -10,6 +10,9 @@
         <path>$WS_DIR$\018.ChipTemp\ProjectFile\STM32_F407_STD_CHIP_TEMP.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\020.DAC\ProjectFile\STM32_F407_STD_DAC.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\007.Exti\ProjectFile\STM32_F407_STD_EXTI.ewp</path>
     </project>
     <project>
