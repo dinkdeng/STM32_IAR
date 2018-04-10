@@ -19,7 +19,9 @@ uint8_t DeviceSRAM_Init(void);
 /**设备挂载的SRAM测试,参数为测试步长 */
 uint8_t DeviceSRAM_Test(uint16_t testStep);
 
+uint8_t DeviceSRAM_Read(uint32_t baseAddr, uint8_t* bufferPtr,uint32_t bufferLength);
 
+uint8_t DeviceSRAM_Write(uint32_t baseAddr, uint8_t* bufferPtr,uint32_t bufferLength);
 
 #endif
 

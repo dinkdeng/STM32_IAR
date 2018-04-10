@@ -180,7 +180,7 @@ uint8_t DeviceSRAM_Init(void)
     return DeviceSRAM_Test(1024);
 }
 
-static uint8_t DeviceSRAM_Read(uint32_t baseAddr, uint8_t* bufferPtr,
+uint8_t DeviceSRAM_Read(uint32_t baseAddr, uint8_t* bufferPtr,
     uint32_t bufferLength)
 {
     if (baseAddr < DEVICE_SRAM_BASE_ADDR || baseAddr >(DEVICE_SRAM_BASE_ADDR + DEVICE_SRAM_LENGTH))
@@ -195,7 +195,7 @@ static uint8_t DeviceSRAM_Read(uint32_t baseAddr, uint8_t* bufferPtr,
     return 0;
 }
 
-static uint8_t DeviceSRAM_Write(uint32_t baseAddr, uint8_t* bufferPtr,
+uint8_t DeviceSRAM_Write(uint32_t baseAddr, uint8_t* bufferPtr,
     uint32_t bufferLength)
 {
     if (baseAddr < DEVICE_SRAM_BASE_ADDR || baseAddr >(DEVICE_SRAM_BASE_ADDR + DEVICE_SRAM_LENGTH))
