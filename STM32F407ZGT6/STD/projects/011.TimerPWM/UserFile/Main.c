@@ -18,6 +18,7 @@ void DeviceLeftExtiProcess()
     if(dutySet > 999)
         dutySet = 999;
     CoreTimer14PWM_SetDuty(dutySet);
+    printf("CoreTimer14PWM_SetDuty %d \r\n",dutySet);
     printf("Left Exti Press\r\n");
 }
 
@@ -40,6 +41,7 @@ void DeviceDownExtiProcess()
     if(dutySet > 999)
         dutySet = 1;
     CoreTimer14PWM_SetDuty(dutySet);
+    printf("CoreTimer14PWM_SetDuty %d \r\n",dutySet);
     printf("Down Exti Press\r\n");
 }
 
@@ -84,7 +86,7 @@ int main(void)
     while(1)
     {
         ExtiCheckLoop();
-        CoreTickDelayMs(500);
+        CoreTickDelayMs(50);
     }
 }
 
