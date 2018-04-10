@@ -61,6 +61,9 @@
         <path>$WS_DIR$\033.SRAM\ProjectFile\STM32_F407_STD_SRAM.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\013.TFT_LCD\ProjectFile\STM32_F407_STD_TFT_LCD.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\012.TimerCapture\ProjectFile\STM32_F407_STD_TIMER_CAPTURE.ewp</path>
     </project>
     <project>

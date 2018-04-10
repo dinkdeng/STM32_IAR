@@ -645,7 +645,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>STM32_F407_STD_SRAM.hex</state>
+                    <state>STM32_F407_STD_TFT_LCD.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -700,7 +700,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>STM32_F407_STD_SRAM.out</state>
+                    <state>STM32_F407_STD_TFT_LCD.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -1061,12 +1061,6 @@
             <group>
                 <name>CoreFunc</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreADC.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreADC.h</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreChipFlash.c</name>
                 </file>
                 <file>
@@ -1170,9 +1164,6 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceLCD.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceLcdAsciiFont.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceLed.c</name>
