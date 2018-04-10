@@ -16,6 +16,9 @@
         <path>$WS_DIR$\001.LED\ProjectFile\STM32_F407_STD_LED.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\015.Random\ProjectFile\STM32_F407_STD_RANDOM.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\006.SerialDMA\ProjectFile\STM32_F407_STD_SERIAL_DMA.ewp</path>
     </project>
     <project>
