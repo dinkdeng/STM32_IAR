@@ -9,7 +9,8 @@
 			"coretickdelay.h": "c",
 			"stm32f4xx.h": "c",
 			"coredac.h": "c",
-			"deviceds18b20.h": "c"
+			"deviceds18b20.h": "c",
+			"devicedht11.h": "c"
 		}
 	}
 }
