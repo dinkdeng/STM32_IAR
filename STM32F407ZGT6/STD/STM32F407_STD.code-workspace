@@ -8,7 +8,8 @@
 		"files.associations": {
 			"coretickdelay.h": "c",
 			"stm32f4xx.h": "c",
-			"coredac.h": "c"
+			"coredac.h": "c",
+			"deviceds18b20.h": "c"
 		}
 	}
 }
