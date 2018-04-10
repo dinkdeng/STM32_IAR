@@ -10,7 +10,10 @@
 			"stm32f4xx.h": "c",
 			"coredac.h": "c",
 			"deviceds18b20.h": "c",
-			"devicedht11.h": "c"
+			"devicedht11.h": "c",
+			"corerand.h": "c",
+			"devicew25qxx.h": "c",
+			"devicempu6050.h": "c"
 		}
 	}
 }

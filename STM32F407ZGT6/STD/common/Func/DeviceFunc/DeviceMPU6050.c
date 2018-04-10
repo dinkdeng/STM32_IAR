@@ -414,7 +414,7 @@ uint8_t DeviceMPU6050_GetTemperature(short* temp)
 //    其他,错误代码
 uint8_t DeviceMPU6050_GetGyroscope(short *gx,short *gy,short *gz)
 {
-    u8 buf[6];
+    uint8_t buf[6];
 	if(DeviceMPU6050_ReadLen(MPU_ADDR,MPU_GYRO_XOUTH_REG,6,buf))
 	{
 		*gx=0;
@@ -424,9 +424,9 @@ uint8_t DeviceMPU6050_GetGyroscope(short *gx,short *gy,short *gz)
 	}
 	else
 	{
-        *gx=((u16)buf[0]<<8)|buf[1];
-		*gy=((u16)buf[2]<<8)|buf[3];
-		*gz=((u16)buf[4]<<8)|buf[5];
+        *gx=((uint16_t)buf[0]<<8)|buf[1];
+		*gy=((uint16_t)buf[2]<<8)|buf[3];
+		*gz=((uint16_t)buf[4]<<8)|buf[5];
 		return 0;
 	}
 }
@@ -437,7 +437,7 @@ uint8_t DeviceMPU6050_GetGyroscope(short *gx,short *gy,short *gz)
 //    其他,错误代码
 uint8_t DeviceMPU6050_GetAccelerometer(short *ax,short *ay,short *az)
 {
-    u8 buf[6];
+    uint8_t buf[6];
 	if(DeviceMPU6050_ReadLen(MPU_ADDR,MPU_ACCEL_XOUTH_REG,6,buf))
 	{
 		*ax=0;
@@ -447,9 +447,9 @@ uint8_t DeviceMPU6050_GetAccelerometer(short *ax,short *ay,short *az)
 	}
 	else
 	{
-        *ax=((u16)buf[0]<<8)|buf[1];
-		*ay=((u16)buf[2]<<8)|buf[3];
-		*az=((u16)buf[4]<<8)|buf[5];
+        *ax=((uint16_t)buf[0]<<8)|buf[1];
+		*ay=((uint16_t)buf[2]<<8)|buf[3];
+		*az=((uint16_t)buf[4]<<8)|buf[5];
         return 0;
 	}
 }
