@@ -17,7 +17,8 @@ void DeviceLeftExtiProcess()
     double maxTimer = 0.0;
     uint32_t captureCount = 0;
     captureCount = CoreTimer5CaptureGetCountWithTime(&maxTimer);
-    printf("captureCount : %d   maxTimer = %0.1f \r\n",captureCount,maxTimer);
+    printf("captureCount : %d   maxTimer = %0.1f US\r\n",captureCount,maxTimer);
+
 }
 
 void DeviceDownExtiProcess()
@@ -57,7 +58,7 @@ int main(void)
     while(1)
     {
         ExtiCheckLoop();
-        CoreTickDelayMs(500);
+        CoreTickDelayMs(100);
     }
 }
 
