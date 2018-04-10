@@ -4,6 +4,9 @@
         <path>$WS_DIR$\017.ADC\ProjectFile\STM32_F407_STD_ADC.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\022.AT24CXX\ProjectFile\STM32_F407_STD_AT24CXX.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\003.BEEP\ProjectFile\STM32_F407_STD_BEEP.ewp</path>
     </project>
     <project>
