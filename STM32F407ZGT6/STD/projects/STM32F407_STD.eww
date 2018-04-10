@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
+        <path>$WS_DIR$\017.ADC\ProjectFile\STM32_F407_STD_ADC.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\003.BEEP\ProjectFile\STM32_F407_STD_BEEP.ewp</path>
     </project>
     <project>

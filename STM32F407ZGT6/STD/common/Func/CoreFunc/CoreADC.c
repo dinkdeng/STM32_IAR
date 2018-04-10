@@ -1,6 +1,6 @@
 #include "CoreADC.h"
 
-/**初始化 */
+/**初始化 使用ADC1的通道5*/
 void CoreADC_Init(void)
 {
     GPIO_InitTypeDef  GPIO_InitStructure;
