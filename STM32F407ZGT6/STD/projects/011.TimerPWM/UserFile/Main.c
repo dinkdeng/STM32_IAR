@@ -7,11 +7,17 @@
 #include "CoreSerialUart1DMA.h"
 #include "DeviceExti.h"
 #include "CoreWWDG.h"
+#include "CoreTimerPWM.h"
 
+uint32_t dutySet = 1;
 
 void DeviceLeftExtiProcess()
 {
     DeviceExtiClear(EXTI_LEFT);
+    dutySet += 10;
+    if(dutySet > 999)
+        dutySet = 999;
+    CoreTimer14PWM_SetDuty(dutySet);
     printf("Left Exti Press\r\n");
 }
 
@@ -30,6 +36,10 @@ void DeviceUpExtiProcess()
 void DeviceDownExtiProcess()
 {
     DeviceExtiClear(EXTI_DOWN);
+    dutySet -= 10;
+    if(dutySet > 999)
+        dutySet = 1;
+    CoreTimer14PWM_SetDuty(dutySet);
     printf("Down Exti Press\r\n");
 }
 
@@ -67,8 +77,9 @@ int main(void)
     /**蜂鸣器初始化 */
     DeviceBeepInit(BEEP_OFF);
     CoreSerialUart1DMA_Init(115200,CoreSerialUart1DMA_DefaultCallBack);
-    /**WWDG初始化 */
-    CoreWWDG_Init(CORE_WWDG_DEFAULT_COUNT,CORE_WWDG_WINDOW_VALUE,CORE_WWDG_PRER);
+    /**PWM初始化 1K主频*/
+    CoreTimer14PWM_Init(999,83);
+    CoreTimer14PWM_Start(dutySet);
     printf("System Init Over\r\n");
     while(1)
     {

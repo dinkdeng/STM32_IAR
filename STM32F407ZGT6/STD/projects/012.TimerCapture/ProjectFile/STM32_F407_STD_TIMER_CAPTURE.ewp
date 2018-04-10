@@ -645,7 +645,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>STM32_F407_STD_WWDG.hex</state>
+                    <state>STM32_F407_STD_TIMER_CAPTURE.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -700,7 +700,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>STM32_F407_STD_WWDG.out</state>
+                    <state>STM32_F407_STD_TIMER_CAPTURE.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -1061,16 +1061,58 @@
             <group>
                 <name>CoreFunc</name>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreChipFlash.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreChipFlash.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreChipTempSensor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreChipTempSensor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreDAC.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreDAC.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreIIC.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreIIC.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreRand.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreRand.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1DMA.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSerialUart1DMA.h</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSPI.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreSPI.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerCapture.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerCapture.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreWWDG.c</name>
@@ -1082,10 +1124,28 @@
             <group>
                 <name>DeviceFunc</name>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceAT24CXX.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceAT24CXX.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceBeep.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceBeep.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceDHT11.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceDHT11.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceDS18B20.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceDS18B20.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceExti.c</name>
@@ -1104,6 +1164,36 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceLed.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceLightSensor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceLightSensor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceMPU6050.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceMPU6050.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DevicePWM_DAC.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DevicePWM_DAC.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceSRAM.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceSRAM.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceW25QXX.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceW25QXX.h</name>
                 </file>
             </group>
             <group>

@@ -25,6 +25,15 @@
         <path>$WS_DIR$\005.SerialInt\ProjectFile\STM32_F407_STD_SERIAL_INT.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\012.TimerCapture\ProjectFile\STM32_F407_STD_TIMER_CAPTURE.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\010.TimerCount\ProjectFile\STM32_F407_STD_TIMER_COUNT.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\011.TimerPWM\ProjectFile\STM32_F407_STD_TIMER_PWM.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\009.WWDG\ProjectFile\STM32_F407_STD_WWDG.ewp</path>
     </project>
     <batchBuild />

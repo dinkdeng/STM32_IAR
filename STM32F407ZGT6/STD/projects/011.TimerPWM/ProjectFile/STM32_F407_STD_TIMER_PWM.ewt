@@ -1206,6 +1206,12 @@
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.h</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerPWM.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerPWM.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreWWDG.c</name>
                 </file>
                 <file>

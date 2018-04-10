@@ -645,7 +645,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>STM32_F407_STD_WWDG.hex</state>
+                    <state>STM32_F407_STD_TIMER_PWM.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -700,7 +700,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>STM32_F407_STD_WWDG.out</state>
+                    <state>STM32_F407_STD_TIMER_PWM.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -1071,6 +1071,12 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTickDelay.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerPWM.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreTimerPWM.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\CoreFunc\CoreWWDG.c</name>

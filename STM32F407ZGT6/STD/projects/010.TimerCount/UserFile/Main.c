@@ -7,6 +7,7 @@
 #include "CoreSerialUart1DMA.h"
 #include "DeviceExti.h"
 #include "CoreWWDG.h"
+#include "CoreTimerCount.h"
 
 
 void DeviceLeftExtiProcess()
@@ -67,8 +68,8 @@ int main(void)
     /**蜂鸣器初始化 */
     DeviceBeepInit(BEEP_OFF);
     CoreSerialUart1DMA_Init(115200,CoreSerialUart1DMA_DefaultCallBack);
-    /**WWDG初始化 */
-    CoreWWDG_Init(CORE_WWDG_DEFAULT_COUNT,CORE_WWDG_WINDOW_VALUE,CORE_WWDG_PRER);
+    /**定时器计数初始化 500MS中断一次*/
+    CoreTimer3CountInit(5000,8399,CoreTimer3CountDefaultCallBack);
     printf("System Init Over\r\n");
     while(1)
     {

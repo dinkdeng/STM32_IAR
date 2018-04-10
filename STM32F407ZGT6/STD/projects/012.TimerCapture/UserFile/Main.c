@@ -7,24 +7,17 @@
 #include "CoreSerialUart1DMA.h"
 #include "DeviceExti.h"
 #include "CoreWWDG.h"
+#include "CoreTimerCapture.h"
 
 
 void DeviceLeftExtiProcess()
 {
     DeviceExtiClear(EXTI_LEFT);
     printf("Left Exti Press\r\n");
-}
-
-void DeviceRightExtiProcess()
-{
-    DeviceExtiClear(EXTI_RIGHT);
-    printf("Right Exti Press\r\n");
-}
-
-void DeviceUpExtiProcess()
-{
-    DeviceExtiClear(EXTI_UP);
-    printf("Up Exti Press\r\n");
+    double maxTimer = 0.0;
+    uint32_t captureCount = 0;
+    captureCount = CoreTimer5CaptureGetCountWithTime(&maxTimer);
+    printf("captureCount : %d   maxTimer = %0.1f \r\n",captureCount,maxTimer);
 }
 
 void DeviceDownExtiProcess()
@@ -41,14 +34,6 @@ void ExtiCheckLoop(void)
     {
         DeviceLeftExtiProcess();
     }
-    if(DeviceExtiGetCount(EXTI_RIGHT) > 0)
-    {
-        DeviceRightExtiProcess();
-    }
-    if(DeviceExtiGetCount(EXTI_UP) > 0)
-    {
-        DeviceUpExtiProcess();
-    }
     if(DeviceExtiGetCount(EXTI_DOWN) > 0)
     {
         DeviceDownExtiProcess();
@@ -62,13 +47,12 @@ int main(void)
     DeviceLedInit(LED_STATUS_OFF);
     /*初始化EXTI*/
     DeviceExtiInit(EXTI_LEFT);
-    DeviceExtiInit(EXTI_UP);
     DeviceExtiInit(EXTI_DOWN);
     /**蜂鸣器初始化 */
     DeviceBeepInit(BEEP_OFF);
     CoreSerialUart1DMA_Init(115200,CoreSerialUart1DMA_DefaultCallBack);
-    /**WWDG初始化 */
-    CoreWWDG_Init(CORE_WWDG_DEFAULT_COUNT,CORE_WWDG_WINDOW_VALUE,CORE_WWDG_PRER);
+    /**输入捕获初始化 */
+    CoreTimer5CaptureInit();
     printf("System Init Over\r\n");
     while(1)
     {
