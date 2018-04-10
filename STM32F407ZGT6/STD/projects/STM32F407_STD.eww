@@ -55,6 +55,9 @@
         <path>$WS_DIR$\011.TimerPWM\ProjectFile\STM32_F407_STD_TIMER_PWM.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\023.W25QXX\ProjectFile\STM32_F407_STD_W25QXX.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\009.WWDG\ProjectFile\STM32_F407_STD_WWDG.ewp</path>
     </project>
     <batchBuild />
