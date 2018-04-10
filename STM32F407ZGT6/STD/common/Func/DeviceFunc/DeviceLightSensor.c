@@ -77,5 +77,6 @@ uint16_t DeviceLightSensorGetPowerful(uint8_t times)
         channelValueSum += ADC_GetConversionValue(ADC3);
         timesLocal--;
     }
-    return (uint16_t)(channelValueSum/times);
+	/**数据值越大,光的强度越小,数据值越小,光的强度越大*/
+    return (uint16_t)(4096 - (channelValueSum/times));
 }
