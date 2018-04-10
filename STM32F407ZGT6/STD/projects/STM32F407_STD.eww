@@ -28,6 +28,9 @@
         <path>$WS_DIR$\019.LightSensor\ProjectFile\STM32_F407_STD_LightSensor.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\021.PWM_DAC\ProjectFile\STM32_F407_STD_PWM_DAC.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\015.Random\ProjectFile\STM32_F407_STD_RANDOM.ewp</path>
     </project>
     <project>
