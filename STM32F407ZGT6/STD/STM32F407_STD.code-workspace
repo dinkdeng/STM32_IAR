@@ -13,7 +13,8 @@
 			"devicedht11.h": "c",
 			"corerand.h": "c",
 			"devicew25qxx.h": "c",
-			"devicempu6050.h": "c"
+			"devicempu6050.h": "c",
+			"corechipflash.h": "c"
 		}
 	}
 }

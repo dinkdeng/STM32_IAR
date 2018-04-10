@@ -10,6 +10,9 @@
         <path>$WS_DIR$\003.BEEP\ProjectFile\STM32_F407_STD_BEEP.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\032.ChipFlash\ProjectFile\STM32_F407_STD_CHIP_FLASH.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\018.ChipTemp\ProjectFile\STM32_F407_STD_CHIP_TEMP.ewp</path>
     </project>
     <project>
