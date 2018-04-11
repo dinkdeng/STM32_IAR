@@ -1190,6 +1190,12 @@
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DevicePWM_DAC.h</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceRS485.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceRS485.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\common\Func\DeviceFunc\DeviceSRAM.c</name>
                 </file>
                 <file>
