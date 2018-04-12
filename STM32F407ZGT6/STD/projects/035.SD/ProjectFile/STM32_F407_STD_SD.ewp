@@ -645,7 +645,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>STM32_F407_STD_TFT_LCD.hex</state>
+                    <state>STM32_F407_STD_SD.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -700,7 +700,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>STM32_F407_STD_TFT_LCD.out</state>
+                    <state>STM32_F407_STD_SDIO.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>

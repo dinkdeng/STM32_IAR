@@ -37,7 +37,6 @@ typedef enum INT_SUB_PRI
 }INT_SUB_PRI;
 
 
-
 //以下为汇编函数
 //执行WFI指令
 void WFI_SET(void);		
@@ -109,6 +108,18 @@ void MSR_MSP(u32 addr);
 
 #define PIout(n)   BIT_ADDR(GPIOI_ODR_Addr,n)  //输出 
 #define PIin(n)    BIT_ADDR(GPIOI_IDR_Addr,n)  //输入
+
+//执行WFI指令
+void WFI_SET(void);		
+
+//关闭所有中断
+void INTX_DISABLE(void);
+
+//开启所有中断
+void INTX_ENABLE(void);	
+
+//设置堆栈地址
+void MSR_MSP(u32 addr);	 
 
 #endif
 

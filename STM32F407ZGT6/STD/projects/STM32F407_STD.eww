@@ -49,6 +49,9 @@
         <path>$WS_DIR$\015.Random\ProjectFile\STM32_F407_STD_RANDOM.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\035.SD\ProjectFile\STM32_F407_STD_SD.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\006.SerialDMA\ProjectFile\STM32_F407_STD_SERIAL_DMA.ewp</path>
     </project>
     <project>
