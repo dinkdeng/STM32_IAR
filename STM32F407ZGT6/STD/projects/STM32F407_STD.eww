@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
+        <path>$WS_DIR$\055.RS485\ProjectFile\STM32_F407_RS485.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\014.RTC\ProjectFile\STM32_F407_RTC.ewp</path>
     </project>
     <project>
