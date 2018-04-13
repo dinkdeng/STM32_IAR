@@ -15,7 +15,8 @@
 			"devicew25qxx.h": "c",
 			"devicempu6050.h": "c",
 			"corechipflash.h": "c",
-			"devicesram.h": "c"
+			"devicesram.h": "c",
+			"corertc.h": "c"
 		}
 	}
 }
