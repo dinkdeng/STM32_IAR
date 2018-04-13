@@ -81,5 +81,8 @@
     <project>
         <path>$WS_DIR$\009.WWDG\ProjectFile\STM32_F407_STD_WWDG.ewp</path>
     </project>
+    <project>
+        <path>$WS_DIR$\025.Touch\ProjectFile\STM32_F407_TOUCH_KEY.ewp</path>
+    </project>
     <batchBuild />
 </workspace>
