@@ -16,6 +16,9 @@
         <path>$WS_DIR$\003.BEEP\ProjectFile\STM32_F407_STD_BEEP.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\024.CAN\ProjectFile\STM32_F407_STD_CAN.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\032.ChipFlash\ProjectFile\STM32_F407_STD_CHIP_FLASH.ewp</path>
     </project>
     <project>
