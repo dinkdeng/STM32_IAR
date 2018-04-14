@@ -85,6 +85,9 @@
         <path>$WS_DIR$\023.W25QXX\ProjectFile\STM32_F407_STD_W25QXX.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\016.Wakeup\ProjectFile\STM32_F407_STD_WAKEUP.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\009.WWDG\ProjectFile\STM32_F407_STD_WWDG.ewp</path>
     </project>
     <project>
